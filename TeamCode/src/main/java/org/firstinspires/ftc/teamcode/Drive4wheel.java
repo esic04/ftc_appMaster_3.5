@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
  * Created by ethan on 11/26/17.
  */
 @TeleOp
+@Disabled
 public class Drive4wheel extends OpMode {
     private DcMotor frontLeft;
     private DcMotor frontRight;

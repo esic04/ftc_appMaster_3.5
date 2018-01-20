@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import android.graphics.Color;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -26,6 +27,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 //andymark motors(back ones) are 1220 counts instead of 1440
 //may need to change motor neg or pos because of setting motor direction
 @Autonomous
+@Disabled
 public class LeftRedNonInvertedDirections extends LinearOpMode {
     DcMotor left;
     DcMotor right;

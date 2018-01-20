@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import android.graphics.Color;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -25,6 +26,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 //try getting rid of motor set directions
 //write everything test program
 @Autonomous
+@Disabled
 public class AutoTest extends LinearOpMode {
     private DcMotor left;
     private DcMotor right;

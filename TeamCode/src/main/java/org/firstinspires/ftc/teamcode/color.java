@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.view.View;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 
 //ples work
 @TeleOp
+@Disabled
 public class color extends OpMode {
     ColorSensor color;
     float rgbValues[];

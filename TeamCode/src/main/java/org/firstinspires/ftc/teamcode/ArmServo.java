@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by ethan on 11/26/17.
  */
 @TeleOp
+@Disabled
 public class ArmServo extends OpMode {
     Servo servo;
     Servo servo2;
