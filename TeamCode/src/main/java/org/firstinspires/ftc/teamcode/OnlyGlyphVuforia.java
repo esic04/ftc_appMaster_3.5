@@ -11,6 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
+//back motor directions, 1 is reversed, -1 is how it used to be (before switching connectors)
 @Autonomous
 public class OnlyGlyphVuforia extends LinearOpMode {
     DcMotor left;
@@ -29,6 +30,7 @@ public class OnlyGlyphVuforia extends LinearOpMode {
     double servo2OpenPos;
     int frontBoxTgt;
     int backBoxTgt;
+    int backMotorDirections;
 
     @Override
     public void runOpMode(){
@@ -53,6 +55,7 @@ public class OnlyGlyphVuforia extends LinearOpMode {
         servo2ClosePos = 0.85;
         servoOpenPos = 0.35;
         servo2OpenPos = 0.65;
+        backMotorDirections = 1;
 
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -135,8 +138,8 @@ public class OnlyGlyphVuforia extends LinearOpMode {
             sleep(1000);
         }
 
-        left.setTargetPosition(left.getCurrentPosition() + backBoxTgt);
-        right.setTargetPosition(right.getCurrentPosition() - backBoxTgt);
+        left.setTargetPosition(left.getCurrentPosition() + (backBoxTgt * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() - (backBoxTgt * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + frontBoxTgt);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - frontBoxTgt);
 
@@ -148,8 +151,8 @@ public class OnlyGlyphVuforia extends LinearOpMode {
             telemetry.update();
         }
 
-        left.setTargetPosition(left.getCurrentPosition() + 669);
-        right.setTargetPosition(right.getCurrentPosition() + 669);
+        left.setTargetPosition(left.getCurrentPosition() - (669 * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() - (669 * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
@@ -161,8 +164,8 @@ public class OnlyGlyphVuforia extends LinearOpMode {
             telemetry.update();
         }
 
-        left.setTargetPosition(left.getCurrentPosition() + 97);
-        right.setTargetPosition(right.getCurrentPosition() - 97);
+        left.setTargetPosition(left.getCurrentPosition() - (97 * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() + (97 * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 115);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - 115);
 
@@ -174,8 +177,8 @@ public class OnlyGlyphVuforia extends LinearOpMode {
             telemetry.update();
         }
 
-        left.setTargetPosition(left.getCurrentPosition() - 194);
-        right.setTargetPosition(right.getCurrentPosition() + 194);
+        left.setTargetPosition(left.getCurrentPosition() + (194 * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() - (194 * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 229);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 229);
 

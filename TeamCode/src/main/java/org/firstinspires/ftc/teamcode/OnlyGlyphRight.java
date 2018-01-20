@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 //inverted back motors for this program, need to do rest
+//back motor directions, 1 is reversed, -1 is how it used to be (before switching connectors)
 
 @Autonomous
 public class OnlyGlyphRight extends LinearOpMode {
@@ -22,6 +23,7 @@ public class OnlyGlyphRight extends LinearOpMode {
     double servo2ClosePos;
     double servoOpenPos;
     double servo2OpenPos;
+    int backMotorDirections;
 
     @Override
     public void runOpMode(){
@@ -38,6 +40,7 @@ public class OnlyGlyphRight extends LinearOpMode {
         servo2ClosePos = 0.85;
         servoOpenPos = 0.35;
         servo2OpenPos = 0.65;
+        backMotorDirections = 1;
 
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -66,15 +69,15 @@ public class OnlyGlyphRight extends LinearOpMode {
         frontRight.setPower(0.2);
         armUp.setPower(0.4);
 
-        armUp.setTargetPosition(armUp.getCurrentPosition() - 900);
+        armUp.setTargetPosition(armUp.getCurrentPosition() - 1000);
 
         while(opModeIsActive() && armUp.isBusy()){
             telemetry.addData("arm up position", armUp.getCurrentPosition());
             telemetry.update();
         }
 
-        left.setTargetPosition(left.getCurrentPosition() + 1748);
-        right.setTargetPosition(right.getCurrentPosition() - 1748);
+        left.setTargetPosition(left.getCurrentPosition() + (1748 * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() - (1748 * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 2062);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 2062);
 
@@ -91,8 +94,8 @@ public class OnlyGlyphRight extends LinearOpMode {
         frontLeft.setPower(0.3);
         frontRight.setPower(0.3);
 
-        left.setTargetPosition(left.getCurrentPosition() - 669);
-        right.setTargetPosition(right.getCurrentPosition() - 669);
+        left.setTargetPosition(left.getCurrentPosition() - (669 * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() - (669 * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
@@ -109,8 +112,8 @@ public class OnlyGlyphRight extends LinearOpMode {
         frontLeft.setPower(0.2);
         frontRight.setPower(0.2);
 
-        left.setTargetPosition(left.getCurrentPosition() - 97);
-        right.setTargetPosition(right.getCurrentPosition() + 97);
+        left.setTargetPosition(left.getCurrentPosition() - (97 * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() + (97 * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 115);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - 115);
 
@@ -125,8 +128,8 @@ public class OnlyGlyphRight extends LinearOpMode {
         servo.setPosition(servoOpenPos);
         servo2.setPosition(servo2OpenPos);
 
-        left.setTargetPosition(left.getCurrentPosition() + 194);
-        right.setTargetPosition(right.getCurrentPosition() - 194);
+        left.setTargetPosition(left.getCurrentPosition() + (194 * backMotorDirections));
+        right.setTargetPosition(right.getCurrentPosition() - (194 * backMotorDirections));
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 229);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 229);
 

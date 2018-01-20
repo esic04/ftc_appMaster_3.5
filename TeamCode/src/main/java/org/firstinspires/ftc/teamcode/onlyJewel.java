@@ -13,6 +13,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 //knocks off red
+//back motor directions, 1 is reversed, -1 is how it used to be (before switching connectors)
 @Autonomous
 public class onlyJewel extends LinearOpMode {
     DcMotor left;
@@ -30,6 +31,7 @@ public class onlyJewel extends LinearOpMode {
     double servo2ClosePos;
     double servoOpenPos;
     double servo2OpenPos;
+    int backMotorDirections;
 
     public void runOpMode() {
         left = hardwareMap.get(DcMotor.class, "left");
@@ -46,6 +48,7 @@ public class onlyJewel extends LinearOpMode {
         servo2ClosePos = 0.85;
         servoOpenPos = 0.35;
         servo2OpenPos = 0.65;
+        backMotorDirections = 1;
 
         color.enableLed(true);
 
@@ -101,9 +104,9 @@ public class onlyJewel extends LinearOpMode {
             telemetry.addData("color", "red");
             telemetry.update();
 
-            left.setTargetPosition(left.getCurrentPosition() + 305);
-            right.setTargetPosition(right.getCurrentPosition() + 305);
-            frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
+            left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
+            frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360 );
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
             while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
@@ -116,8 +119,8 @@ public class onlyJewel extends LinearOpMode {
 
             servoJewel.setPosition(1);
 
-            left.setTargetPosition(left.getCurrentPosition() - 305);
-            right.setTargetPosition(right.getCurrentPosition() - 305);
+            left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -133,8 +136,8 @@ public class onlyJewel extends LinearOpMode {
             telemetry.addData("color", "blue");
             telemetry.update();
 
-            left.setTargetPosition(left.getCurrentPosition() - 305);
-            right.setTargetPosition(right.getCurrentPosition() - 305);
+            left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -148,8 +151,8 @@ public class onlyJewel extends LinearOpMode {
 
             servoJewel.setPosition(1);
 
-            left.setTargetPosition(left.getCurrentPosition() + 305);
-            right.setTargetPosition(right.getCurrentPosition() + 305);
+            left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 

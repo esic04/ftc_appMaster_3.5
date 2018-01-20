@@ -9,6 +9,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import static org.firstinspires.ftc.robotcontroller.internal.FieldPositionProgram.BalancingStone;
 
+//back motor directions, 1 is reversed, -1 is how it used to be (before switching connectors)
 @Autonomous
 public class FullAutoNoVuforia extends LinearOpMode {
     DcMotor left;
@@ -26,6 +27,7 @@ public class FullAutoNoVuforia extends LinearOpMode {
     double servoOpenPos;
     double servo2OpenPos;
     float colorVal[];
+    int backMotorDirections;
 
     @Override
     public void runOpMode() {
@@ -43,6 +45,7 @@ public class FullAutoNoVuforia extends LinearOpMode {
         servo2ClosePos = 0.85;
         servoOpenPos = 0.5;
         servo2OpenPos = 0.5;
+        backMotorDirections = 1;
 
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -94,8 +97,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "red");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -107,8 +110,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -126,8 +129,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "blue");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -139,8 +142,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -163,8 +166,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 sleep(500);
             }
 
-            left.setTargetPosition(left.getCurrentPosition() - 1701);
-            right.setTargetPosition(right.getCurrentPosition() + 1701);
+            left.setTargetPosition(left.getCurrentPosition() - 1701 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 1701 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 1997);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 1997);
 
@@ -181,8 +184,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             frontLeft.setPower(0.4);
             frontRight.setPower(0.4);
 
-            left.setTargetPosition(left.getCurrentPosition() - 669);
-            right.setTargetPosition(right.getCurrentPosition() - 669);
+            left.setTargetPosition(left.getCurrentPosition() - 669 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 669 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
@@ -199,8 +202,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             frontLeft.setPower(0.2);
             frontRight.setPower(0.2);
 
-            left.setTargetPosition(left.getCurrentPosition() - 534);
-            right.setTargetPosition(right.getCurrentPosition() + 534);
+            left.setTargetPosition(left.getCurrentPosition() - 534 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 534 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 630);
 
@@ -215,8 +218,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             servo.setPosition(servoOpenPos);
             servo2.setPosition(servo2OpenPos);
 
-            left.setTargetPosition(left.getCurrentPosition() + 340);
-            right.setTargetPosition(right.getCurrentPosition() - 340);
+            left.setTargetPosition(left.getCurrentPosition() + 340 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 340 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 401);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 401);
 
@@ -241,8 +244,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "blue");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -254,8 +257,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -273,8 +276,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "red");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -286,8 +289,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -310,8 +313,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 sleep(500);
             }
 
-            left.setTargetPosition(left.getCurrentPosition() - 1701);
-            right.setTargetPosition(right.getCurrentPosition() + 1701);
+            left.setTargetPosition(left.getCurrentPosition() - 1701 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 1701 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 1997);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 1997);
 
@@ -323,8 +326,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.update();
             }
 
-            left.setTargetPosition(left.getCurrentPosition() - 669);
-            right.setTargetPosition(right.getCurrentPosition() - 669);
+            left.setTargetPosition(left.getCurrentPosition() - 669 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 669 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
@@ -336,8 +339,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.update();
             }
 
-            left.setTargetPosition(left.getCurrentPosition() - 534);
-            right.setTargetPosition(right.getCurrentPosition() + 534);
+            left.setTargetPosition(left.getCurrentPosition() - 534 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 534 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 630);
 
@@ -352,8 +355,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             servo.setPosition(servoOpenPos);
             servo2.setPosition(servo2OpenPos);
 
-            left.setTargetPosition(left.getCurrentPosition() + 340);
-            right.setTargetPosition(right.getCurrentPosition() - 340);
+            left.setTargetPosition(left.getCurrentPosition() + 340 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 340 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 401);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 401);
 
@@ -378,8 +381,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "blue");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -391,8 +394,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -410,8 +413,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "red");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -423,8 +426,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -447,8 +450,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 sleep(500);
             }
 
-            left.setTargetPosition(left.getCurrentPosition() + 1701);
-            right.setTargetPosition(right.getCurrentPosition() - 1701);
+            left.setTargetPosition(left.getCurrentPosition() + 1701 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 1701 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 1997);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 1997);
 
@@ -460,8 +463,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.update();
             }
 
-            left.setTargetPosition(left.getCurrentPosition() - 669);
-            right.setTargetPosition(right.getCurrentPosition() - 669);
+            left.setTargetPosition(left.getCurrentPosition() - 669 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 669 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
@@ -473,8 +476,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.update();
             }
 
-            left.setTargetPosition(left.getCurrentPosition() - 534);
-            right.setTargetPosition(right.getCurrentPosition() + 534);
+            left.setTargetPosition(left.getCurrentPosition() - 534 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 534 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 630);
 
@@ -489,8 +492,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             servo.setPosition(servoOpenPos);
             servo2.setPosition(servo2OpenPos);
 
-            left.setTargetPosition(left.getCurrentPosition() + 340);
-            right.setTargetPosition(right.getCurrentPosition() - 340);
+            left.setTargetPosition(left.getCurrentPosition() + 340 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 340 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 401);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 401);
 
@@ -515,8 +518,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "red");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -528,8 +531,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -547,8 +550,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 telemetry.addData("color", "blue");
                 telemetry.update();
 
-                left.setTargetPosition(left.getCurrentPosition() + 305);
-                right.setTargetPosition(right.getCurrentPosition() + 305);
+                left.setTargetPosition(left.getCurrentPosition() + 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() + 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() - 360);
 
@@ -560,8 +563,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                     telemetry.update();
                 }
 
-                left.setTargetPosition(left.getCurrentPosition() - 305);
-                right.setTargetPosition(right.getCurrentPosition() - 305);
+                left.setTargetPosition(left.getCurrentPosition() - 305 * backMotorDirections);
+                right.setTargetPosition(right.getCurrentPosition() - 305 * backMotorDirections);
                 frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 360);
                 frontRight.setTargetPosition(frontRight.getCurrentPosition() + 360);
 
@@ -584,8 +587,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
                 sleep(500);
             }
 
-            left.setTargetPosition(left.getCurrentPosition() + 1701);
-            right.setTargetPosition(right.getCurrentPosition() - 1701);
+            left.setTargetPosition(left.getCurrentPosition() + 1701 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 1701 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 1997);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 1997);
 
@@ -602,8 +605,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             frontLeft.setPower(0.4);
             frontRight.setPower(0.4);
 
-            left.setTargetPosition(left.getCurrentPosition() - 669);
-            right.setTargetPosition(right.getCurrentPosition() - 669);
+            left.setTargetPosition(left.getCurrentPosition() - 669 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 669 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
@@ -620,8 +623,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             frontLeft.setPower(0.2);
             frontRight.setPower(0.2);
 
-            left.setTargetPosition(left.getCurrentPosition() - 534);
-            right.setTargetPosition(right.getCurrentPosition() + 534);
+            left.setTargetPosition(left.getCurrentPosition() - 534 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() + 534 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 630);
 
@@ -636,8 +639,8 @@ public class FullAutoNoVuforia extends LinearOpMode {
             servo.setPosition(servoOpenPos);
             servo2.setPosition(servo2OpenPos);
 
-            left.setTargetPosition(left.getCurrentPosition() + 340);
-            right.setTargetPosition(right.getCurrentPosition() - 340);
+            left.setTargetPosition(left.getCurrentPosition() + 340 * backMotorDirections);
+            right.setTargetPosition(right.getCurrentPosition() - 340 * backMotorDirections);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 401);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 401);
 
