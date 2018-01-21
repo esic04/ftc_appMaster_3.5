@@ -39,14 +39,25 @@ public class Drive extends OpMode {
         servo2 = hardwareMap.get(Servo.class, "servo2");
         servoJewel = hardwareMap.get(Servo.class, "servoJewel");
 
-        left.setDirection(DcMotorSimple.Direction.FORWARD);
+        left.setDirection(DcMotorSimple.Direction.REVERSE);
         frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
-        right.setDirection(DcMotorSimple.Direction.REVERSE);
+        right.setDirection(DcMotorSimple.Direction.FORWARD);
         frontRight.setDirection(DcMotorSimple.Direction.FORWARD);
         armUp.setDirection(DcMotorSimple.Direction.FORWARD);
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
+
+        ServoClosePos = 0.2;
+        Servo2ClosePos = 0.8;
+        ServoOpenPos = 0.25;
+        Servo2OpenPos = 0.75;
+        ServoGrabPos = 0.35;
+        Servo2GrabPos = 0.65;
+
+        servo.setPosition(0.5);
+        servo2.setPosition(0.5);
+        servoJewel.setPosition(1);
 
     }
 
@@ -55,29 +66,23 @@ public class Drive extends OpMode {
         LeftPow = gamepad1.left_stick_y - gamepad1.left_stick_x;
         RightPow = gamepad1.left_stick_y + gamepad1.left_stick_x;
         ArmPow = gamepad1.right_stick_y;
-        ServoClosePos = 0.2;
-        Servo2ClosePos = 0.8;
-        ServoOpenPos = 0.25;
-        Servo2OpenPos = 0.75;
-        ServoGrabPos = 0.35;
-        Servo2GrabPos = 0.65;
 
         armUp.setPower(gamepad1.right_stick_y/2);
         servoJewel.setPosition(1);
 
         if(gamepad1.right_bumper){
-            left.setPower(LeftPow/3);
-            right.setPower(RightPow/3);
+            left.setPower(-LeftPow/3);
+            right.setPower(-RightPow/3);
             frontLeft.setPower(LeftPow/3);
             frontRight.setPower(RightPow/3);
         } else if(gamepad1.left_bumper){
-            left.setPower(LeftPow/5);
-            right.setPower(RightPow/5);
+            left.setPower(-LeftPow/5);
+            right.setPower(-RightPow/5);
             frontLeft.setPower(LeftPow/5);
             frontRight.setPower(RightPow/5);
         } else {
-            left.setPower(LeftPow/1.5);
-            right.setPower(RightPow/1.5);
+            left.setPower(-LeftPow/1.5);
+            right.setPower(-RightPow/1.5);
             frontLeft.setPower(LeftPow/1.5);
             frontRight.setPower(RightPow/1.5);
         }

@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 //changed motor directions
 //github test
 //back motor directions, 1 is reversed, -1 is how it used to be (before switching connectors)
+//check back motors are same in config
 
 @Autonomous
 public class OnlyGlyph extends LinearOpMode {
@@ -49,6 +50,8 @@ public class OnlyGlyph extends LinearOpMode {
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armUp.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+        sleep(500);
+
         left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -77,12 +80,12 @@ public class OnlyGlyph extends LinearOpMode {
             telemetry.update();
         }
 
-        left.setTargetPosition(left.getCurrentPosition() - (1701 * backMotorDirections));
-        right.setTargetPosition(right.getCurrentPosition() + (1701 * backMotorDirections));
+        left.setTargetPosition(left.getCurrentPosition() - 1701);
+        right.setTargetPosition(right.getCurrentPosition() + 1701 );
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 1997);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - 1997);
 
-        while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
+        while (opModeIsActive() && left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy()) {
             telemetry.addData("back right current position", right.getCurrentPosition());
             telemetry.addData("back left current position", left.getCurrentPosition());
             telemetry.addData("front right current position", frontRight.getCurrentPosition());
@@ -90,12 +93,12 @@ public class OnlyGlyph extends LinearOpMode {
             telemetry.update();
         }
 
-        left.setTargetPosition(left.getCurrentPosition() - (669 * backMotorDirections));
-        right.setTargetPosition(right.getCurrentPosition() - (669 * backMotorDirections));
+        left.setTargetPosition(left.getCurrentPosition() - 669);
+        right.setTargetPosition(right.getCurrentPosition() - 669 );
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
-        while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
+        while (opModeIsActive() && left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy()) {
             telemetry.addData("back right current position", right.getCurrentPosition());
             telemetry.addData("back left current position", left.getCurrentPosition());
             telemetry.addData("front right current position", frontRight.getCurrentPosition());
@@ -103,12 +106,12 @@ public class OnlyGlyph extends LinearOpMode {
             telemetry.update();
         }
 
-        left.setTargetPosition(left.getCurrentPosition() - (534 * backMotorDirections));
-        right.setTargetPosition(right.getCurrentPosition() + (534 * backMotorDirections));
+        left.setTargetPosition(left.getCurrentPosition() - 534);
+        right.setTargetPosition(right.getCurrentPosition() + 534);
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - 630);
 
-        while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
+        while (opModeIsActive() && left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy()) {
             telemetry.addData("back right current position", right.getCurrentPosition());
             telemetry.addData("back left current position", left.getCurrentPosition());
             telemetry.addData("front right current position", frontRight.getCurrentPosition());
@@ -119,12 +122,12 @@ public class OnlyGlyph extends LinearOpMode {
         servo.setPosition(servoOpenPos);
         servo2.setPosition(servo2OpenPos);
 
-        left.setTargetPosition(left.getCurrentPosition() + (340 * backMotorDirections));
-        right.setTargetPosition(right.getCurrentPosition() - (340 * backMotorDirections));
+        left.setTargetPosition(left.getCurrentPosition() + 340);
+        right.setTargetPosition(right.getCurrentPosition() - 340);
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 401);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 401);
 
-        while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
+        while (opModeIsActive() && left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy()) {
             telemetry.addData("back right current position", right.getCurrentPosition());
             telemetry.addData("back left current position", left.getCurrentPosition());
             telemetry.addData("front right current position", frontRight.getCurrentPosition());

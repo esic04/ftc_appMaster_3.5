@@ -55,7 +55,7 @@ public class OnlyGlyphVuforia extends LinearOpMode {
         servo2ClosePos = 0.85;
         servoOpenPos = 0.35;
         servo2OpenPos = 0.65;
-        backMotorDirections = 1;
+        backMotorDirections = -1;
 
         left.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
