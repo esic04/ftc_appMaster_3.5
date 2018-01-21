@@ -81,7 +81,7 @@ public class OnlyGlyph extends LinearOpMode {
         }
 
         left.setTargetPosition(left.getCurrentPosition() - 1701);
-        right.setTargetPosition(right.getCurrentPosition() + 1701 );
+        right.setTargetPosition(right.getCurrentPosition() + 1701);
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 1997);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - 1997);
 
@@ -94,7 +94,7 @@ public class OnlyGlyph extends LinearOpMode {
         }
 
         left.setTargetPosition(left.getCurrentPosition() - 669);
-        right.setTargetPosition(right.getCurrentPosition() - 669 );
+        right.setTargetPosition(right.getCurrentPosition() - 669);
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
 
