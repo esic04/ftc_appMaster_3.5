@@ -1,21 +1,13 @@
 package org.firstinspires.ftc.teamcode;
 
-import android.graphics.Color;
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-/**
- * Created by ethan on 1/14/18.
- */
-
-//knocks off red
-//back motor directions, 1 is reversed, -1 is how it used to be (before switching connectors)
 @Autonomous
-public class onlyJewel extends LinearOpMode {
+public class OnlyJewelMultipleReading extends LinearOpMode {
     DcMotor left;
     DcMotor right;
     DcMotor frontLeft;
@@ -31,7 +23,9 @@ public class onlyJewel extends LinearOpMode {
     double servo2ClosePos;
     double servoOpenPos;
     double servo2OpenPos;
-    int backMotorDirections;
+    int blueVal = 0;
+    int redVal = 0;
+
 
     public void runOpMode() {
         left = hardwareMap.get(DcMotor.class, "left");
@@ -48,7 +42,6 @@ public class onlyJewel extends LinearOpMode {
         servo2ClosePos = 0.85;
         servoOpenPos = 0.35;
         servo2OpenPos = 0.65;
-        backMotorDirections = 1;
 
         color.enableLed(true);
 
@@ -59,12 +52,6 @@ public class onlyJewel extends LinearOpMode {
         right.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armUp.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        left.setPower(0.2);
-        right.setPower(0.2);
-        frontLeft.setPower(0.2);
-        frontRight.setPower(0.2);
-        armUp.setPower(0.4);
 
         left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -89,7 +76,7 @@ public class onlyJewel extends LinearOpMode {
 
         armUp.setTargetPosition(armUp.getCurrentPosition() - 900);
 
-        while(opModeIsActive() && armUp.isBusy()){
+        while (opModeIsActive() && armUp.isBusy()) {
             telemetry.addData("arm up position", armUp.getCurrentPosition());
             telemetry.update();
         }
@@ -98,14 +85,18 @@ public class onlyJewel extends LinearOpMode {
 
         sleep(1000);
 
-        Color.RGBToHSV(color.red() * 8, color.green() * 8, color.blue() * 8, colorVal);
+        for (int i = 0; i < 50; i++){
+            if(color.blue() >= 5){
+                blueVal++;
+            } else if (color.red() >= 5){
+                redVal++;
+            }
+            sleep(20);
+        }
 
-        if (colorVal[0] <= 20 || colorVal[0] >= 340){
-            telemetry.addData("color", "red");
-            telemetry.update();
-
-            left.setTargetPosition(left.getCurrentPosition() + 203 * backMotorDirections);
-            right.setTargetPosition(right.getCurrentPosition() + 203 * backMotorDirections);
+        if(redVal > 40 && blueVal < 10){
+            left.setTargetPosition(left.getCurrentPosition() + 203);
+            right.setTargetPosition(right.getCurrentPosition() + 203);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 240);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 240);
 
@@ -119,8 +110,8 @@ public class onlyJewel extends LinearOpMode {
 
             servoJewel.setPosition(1);
 
-            left.setTargetPosition(left.getCurrentPosition() - 203 * backMotorDirections);
-            right.setTargetPosition(right.getCurrentPosition() - 203 * backMotorDirections);
+            left.setTargetPosition(left.getCurrentPosition() - 203);
+            right.setTargetPosition(right.getCurrentPosition() - 203);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 240);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 240);
 
@@ -131,13 +122,9 @@ public class onlyJewel extends LinearOpMode {
                 telemetry.addData("front left current position", frontLeft.getCurrentPosition());
                 telemetry.update();
             }
-
-        } else if (colorVal[0] >= 220 && colorVal[0] <= 260){
-            telemetry.addData("color", "blue");
-            telemetry.update();
-
-            left.setTargetPosition(left.getCurrentPosition() - 203 * backMotorDirections);
-            right.setTargetPosition(right.getCurrentPosition() - 203 * backMotorDirections);
+        } else if (blueVal > 50 && redVal < 10){
+            left.setTargetPosition(left.getCurrentPosition() - 203);
+            right.setTargetPosition(right.getCurrentPosition() - 203);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 240);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() + 240);
 
@@ -151,8 +138,8 @@ public class onlyJewel extends LinearOpMode {
 
             servoJewel.setPosition(1);
 
-            left.setTargetPosition(left.getCurrentPosition() + 203 * backMotorDirections);
-            right.setTargetPosition(right.getCurrentPosition() + 203 * backMotorDirections);
+            left.setTargetPosition(left.getCurrentPosition() + 203);
+            right.setTargetPosition(right.getCurrentPosition() + 203);
             frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 240);
             frontRight.setTargetPosition(frontRight.getCurrentPosition() - 240);
 
@@ -163,14 +150,6 @@ public class onlyJewel extends LinearOpMode {
                 telemetry.addData("front left current position", frontLeft.getCurrentPosition());
                 telemetry.update();
             }
-
-        } else{
-            telemetry.addData("color", "unknown");
-            telemetry.update();
-
-            servoJewel.setPosition(1);
-
-            sleep(500);
         }
 
         requestOpModeStop();
