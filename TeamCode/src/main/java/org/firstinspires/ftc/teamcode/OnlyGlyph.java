@@ -50,14 +50,6 @@ public class OnlyGlyph extends LinearOpMode {
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armUp.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        sleep(500);
-
-        left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        armUp.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
         servo.setPosition(servoClosePos);
         servo2.setPosition(servo2ClosePos);
         servoJewel.setPosition(1);
@@ -66,6 +58,12 @@ public class OnlyGlyph extends LinearOpMode {
         telemetry.update();
 
         waitForStart();
+
+        left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        armUp.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         left.setPower(0.2);
         right.setPower(0.2);
@@ -85,7 +83,7 @@ public class OnlyGlyph extends LinearOpMode {
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 1997);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - 1997);
 
-        while (opModeIsActive() && left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy()) {
+        while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())){
             telemetry.addData("back right current position", right.getCurrentPosition());
             telemetry.addData("back left current position", left.getCurrentPosition());
             telemetry.addData("front right current position", frontRight.getCurrentPosition());
