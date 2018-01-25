@@ -58,12 +58,6 @@ public class OnlyJewelFull extends LinearOpMode {
         frontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         armUp.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        left.setPower(0.2);
-        right.setPower(0.2);
-        frontLeft.setPower(0.2);
-        frontRight.setPower(0.2);
-        armUp.setPower(0.4);
-
         left.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         right.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         frontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -87,19 +81,19 @@ public class OnlyJewelFull extends LinearOpMode {
 
         armUp.setTargetPosition(armUp.getCurrentPosition() - 900);
 
-        while(opModeIsActive() && armUp.isBusy()){
+        while(opModeIsActive() && (armUp.getCurrentPosition() > armUp.getTargetPosition() - 30)){
             telemetry.addData("arm up position", armUp.getCurrentPosition());
             telemetry.update();
         }
 
-        servoJewel.setPosition(0.4);
+        servoJewel.setPosition(0.35);
 
         sleep(1000);
 
         Color.RGBToHSV(color.red() * 8, color.green() * 8, color.blue() * 8, colorVal);
 
         if(BalancingStone == 1 || BalancingStone == 3) {
-            if (colorVal[0] <= 20 || colorVal[0] >= 340){
+            if (colorVal[0] >= 220 && colorVal[0] <= 260){
                 telemetry.addData("color", "red");
                 telemetry.update();
 
@@ -120,20 +114,9 @@ public class OnlyJewelFull extends LinearOpMode {
 
                 sleep(1000);
 
-                left.setTargetPosition(left.getCurrentPosition() + 203 * backMotorDirections);
-                right.setTargetPosition(right.getCurrentPosition() + 203 * backMotorDirections);
-                frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 240);
-                frontRight.setTargetPosition(frontRight.getCurrentPosition() - 240);
 
-                while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
-                    telemetry.addData("back right current position", right.getCurrentPosition());
-                    telemetry.addData("back left current position", left.getCurrentPosition());
-                    telemetry.addData("front right current position", frontRight.getCurrentPosition());
-                    telemetry.addData("front left current position", frontLeft.getCurrentPosition());
-                    telemetry.update();
-                }
 
-            } else if (colorVal[0] >= 220 && colorVal[0] <= 260){
+            } else if ((colorVal[0] <= 20 && colorVal[0] > 0) || colorVal[0] >= 340){
                 telemetry.addData("color", "blue");
                 telemetry.update();
 
@@ -154,18 +137,7 @@ public class OnlyJewelFull extends LinearOpMode {
 
                 sleep(1000);
 
-                left.setTargetPosition(left.getCurrentPosition() - 203 * backMotorDirections);
-                right.setTargetPosition(right.getCurrentPosition() - 203 * backMotorDirections);
-                frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 240);
-                frontRight.setTargetPosition(frontRight.getCurrentPosition() + 240);
 
-                while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
-                    telemetry.addData("back right current position", right.getCurrentPosition());
-                    telemetry.addData("back left current position", left.getCurrentPosition());
-                    telemetry.addData("front right current position", frontRight.getCurrentPosition());
-                    telemetry.addData("front left current position", frontLeft.getCurrentPosition());
-                    telemetry.update();
-                }
 
             } else{
                 telemetry.addData("color", "unknown");
@@ -176,7 +148,7 @@ public class OnlyJewelFull extends LinearOpMode {
                 sleep(500);
             }
         } else if (BalancingStone == 2 || BalancingStone == 4){
-            if (colorVal[0] <= 20 || colorVal[0] >= 340){
+            if ((colorVal[0] <= 20 && colorVal[0] > 0)|| colorVal[0] >= 340){
                 telemetry.addData("color", "red");
                 telemetry.update();
 
@@ -197,18 +169,6 @@ public class OnlyJewelFull extends LinearOpMode {
 
                 sleep(1000);
 
-                left.setTargetPosition(left.getCurrentPosition() + 203 * backMotorDirections);
-                right.setTargetPosition(right.getCurrentPosition() + 203 * backMotorDirections);
-                frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 240);
-                frontRight.setTargetPosition(frontRight.getCurrentPosition() - 240);
-
-                while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
-                    telemetry.addData("back right current position", right.getCurrentPosition());
-                    telemetry.addData("back left current position", left.getCurrentPosition());
-                    telemetry.addData("front right current position", frontRight.getCurrentPosition());
-                    telemetry.addData("front left current position", frontLeft.getCurrentPosition());
-                    telemetry.update();
-                }
 
             } else if (colorVal[0] >= 220 && colorVal[0] <= 260){
                 telemetry.addData("color", "blue");
@@ -231,18 +191,7 @@ public class OnlyJewelFull extends LinearOpMode {
 
                 sleep(1000);
 
-                left.setTargetPosition(left.getCurrentPosition() - 203 * backMotorDirections);
-                right.setTargetPosition(right.getCurrentPosition() - 203 * backMotorDirections);
-                frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 240);
-                frontRight.setTargetPosition(frontRight.getCurrentPosition() + 240);
 
-                while (opModeIsActive() && (left.isBusy() && right.isBusy() && frontLeft.isBusy() && frontRight.isBusy())) {
-                    telemetry.addData("back right current position", right.getCurrentPosition());
-                    telemetry.addData("back left current position", left.getCurrentPosition());
-                    telemetry.addData("front right current position", frontRight.getCurrentPosition());
-                    telemetry.addData("front left current position", frontLeft.getCurrentPosition());
-                    telemetry.update();
-                }
 
             } else{
                 telemetry.addData("color", "unknown");

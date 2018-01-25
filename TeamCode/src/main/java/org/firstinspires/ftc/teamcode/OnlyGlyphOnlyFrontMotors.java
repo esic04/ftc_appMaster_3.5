@@ -59,7 +59,7 @@ public class OnlyGlyphOnlyFrontMotors extends LinearOpMode {
 
         armUp.setTargetPosition(armUp.getCurrentPosition() - 1000);
 
-        while(opModeIsActive() && armUp.isBusy()){
+        while(opModeIsActive() && (armUp.getCurrentPosition() > armUp.getTargetPosition() - 30)){
             telemetry.addData("arm up position", armUp.getCurrentPosition());
             telemetry.update();
         }
@@ -73,8 +73,8 @@ public class OnlyGlyphOnlyFrontMotors extends LinearOpMode {
             telemetry.update();
         }
 
-        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 790);
-        frontRight.setTargetPosition(frontRight.getCurrentPosition() + 790);
+        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
+        frontRight.setTargetPosition(frontRight.getCurrentPosition() + 630);
 
         while (opModeIsActive() && (frontLeft.isBusy() && frontRight.isBusy())){
             telemetry.addData("front right current position", frontRight.getCurrentPosition());

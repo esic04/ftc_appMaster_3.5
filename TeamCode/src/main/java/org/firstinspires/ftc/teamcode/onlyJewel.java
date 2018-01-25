@@ -89,12 +89,12 @@ public class onlyJewel extends LinearOpMode {
 
         armUp.setTargetPosition(armUp.getCurrentPosition() - 900);
 
-        while(opModeIsActive() && armUp.isBusy()){
+        while(opModeIsActive() && (armUp.getCurrentPosition() > armUp.getTargetPosition() - 30)){
             telemetry.addData("arm up position", armUp.getCurrentPosition());
             telemetry.update();
         }
 
-        servoJewel.setPosition(0.4);
+        servoJewel.setPosition(0.35);
 
         sleep(1000);
 
