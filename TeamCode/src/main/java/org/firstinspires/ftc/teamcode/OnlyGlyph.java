@@ -65,10 +65,10 @@ public class OnlyGlyph extends LinearOpMode {
         frontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         armUp.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        left.setPower(0.2);
-        right.setPower(0.2);
-        frontLeft.setPower(0.2);
-        frontRight.setPower(0.2);
+        left.setPower(0.4);
+        right.setPower(0.4);
+        frontLeft.setPower(0.4);
+        frontRight.setPower(0.4);
         armUp.setPower(0.4);
 
         armUp.setTargetPosition(armUp.getCurrentPosition() - 1000);
