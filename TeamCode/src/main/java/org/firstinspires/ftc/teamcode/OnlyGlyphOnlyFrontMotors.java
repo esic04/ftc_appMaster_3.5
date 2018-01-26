@@ -73,6 +73,9 @@ public class OnlyGlyphOnlyFrontMotors extends LinearOpMode {
             telemetry.update();
         }
 
+        frontLeft.setPower(0.6);
+        frontRight.setPower(0.6);
+
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 630);
 
@@ -81,6 +84,9 @@ public class OnlyGlyphOnlyFrontMotors extends LinearOpMode {
             telemetry.addData("front left current position", frontLeft.getCurrentPosition());
             telemetry.update();
         }
+
+        frontLeft.setPower(0.4);
+        frontRight.setPower(0.4);
 
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() - 630);
