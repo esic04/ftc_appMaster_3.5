@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
  * Created by ethan on 1/24/18.
  */
 @Autonomous
+@Disabled
 public class OnlyGlyphOnlyFrontMotors extends LinearOpMode {
     DcMotor frontLeft;
     DcMotor frontRight;
@@ -59,37 +61,43 @@ public class OnlyGlyphOnlyFrontMotors extends LinearOpMode {
 
         armUp.setTargetPosition(armUp.getCurrentPosition() - 1000);
 
-        while(opModeIsActive() && (armUp.getCurrentPosition() > armUp.getTargetPosition() - 30)){
+        while(opModeIsActive() && (armUp.getCurrentPosition() < (armUp.getTargetPosition() - 30))){
             telemetry.addData("arm up position", armUp.getCurrentPosition());
             telemetry.update();
         }
 
-        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 1997);
-        frontRight.setTargetPosition(frontRight.getCurrentPosition() - 1997);
+        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 3000);
+        frontRight.setTargetPosition(frontRight.getCurrentPosition() - 3000);
 
         while (opModeIsActive() && (frontLeft.isBusy() && frontRight.isBusy())){
             telemetry.addData("front right current position", frontRight.getCurrentPosition());
             telemetry.addData("front left current position", frontLeft.getCurrentPosition());
             telemetry.update();
         }
+
+        sleep(1000);
 
         frontLeft.setPower(0.6);
         frontRight.setPower(0.6);
 
-        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
-        frontRight.setTargetPosition(frontRight.getCurrentPosition() + 630);
+        sleep(500);
+
+        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 3075);
+        frontRight.setTargetPosition(frontRight.getCurrentPosition() + 3075);
 
         while (opModeIsActive() && (frontLeft.isBusy() && frontRight.isBusy())){
             telemetry.addData("front right current position", frontRight.getCurrentPosition());
             telemetry.addData("front left current position", frontLeft.getCurrentPosition());
             telemetry.update();
         }
+
+        sleep(1000);
 
         frontLeft.setPower(0.4);
         frontRight.setPower(0.4);
 
-        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 630);
-        frontRight.setTargetPosition(frontRight.getCurrentPosition() - 630);
+        frontLeft.setTargetPosition(frontLeft.getCurrentPosition() + 2200);
+        frontRight.setTargetPosition(frontRight.getCurrentPosition() - 2200);
 
         while (opModeIsActive() && (frontLeft.isBusy() && frontRight.isBusy())){
             telemetry.addData("front right current position", frontRight.getCurrentPosition());
@@ -97,8 +105,12 @@ public class OnlyGlyphOnlyFrontMotors extends LinearOpMode {
             telemetry.update();
         }
 
+        sleep(1000);
+
         servo.setPosition(servoOpenPos);
         servo2.setPosition(servo2OpenPos);
+
+        sleep(1000);
 
         frontLeft.setTargetPosition(frontLeft.getCurrentPosition() - 401);
         frontRight.setTargetPosition(frontRight.getCurrentPosition() + 401);

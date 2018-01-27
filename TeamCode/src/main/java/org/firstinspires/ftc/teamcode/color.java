@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 
 //ples work
 @TeleOp
-
+@Disabled
 public class color extends OpMode {
     ColorSensor color;
     float rgbValues[];

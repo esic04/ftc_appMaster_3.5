@@ -81,10 +81,12 @@ public class OnlyJewelFull extends LinearOpMode {
 
         armUp.setTargetPosition(armUp.getCurrentPosition() - 900);
 
-        while(opModeIsActive() && (armUp.getCurrentPosition() > armUp.getTargetPosition() - 30)){
+        while(opModeIsActive() && (armUp.getCurrentPosition() < (armUp.getTargetPosition() - 30))){
             telemetry.addData("arm up position", armUp.getCurrentPosition());
             telemetry.update();
         }
+
+        sleep(500);
 
         servoJewel.setPosition(0.35);
 
@@ -110,8 +112,6 @@ public class OnlyJewelFull extends LinearOpMode {
                     telemetry.update();
                 }
 
-                servoJewel.setPosition(1);
-
                 sleep(1000);
 
 
@@ -133,17 +133,11 @@ public class OnlyJewelFull extends LinearOpMode {
                     telemetry.update();
                 }
 
-                servoJewel.setPosition(1);
-
                 sleep(1000);
-
-
 
             } else{
                 telemetry.addData("color", "unknown");
                 telemetry.update();
-
-                servoJewel.setPosition(1);
 
                 sleep(500);
             }
@@ -165,8 +159,6 @@ public class OnlyJewelFull extends LinearOpMode {
                     telemetry.update();
                 }
 
-                servoJewel.setPosition(1);
-
                 sleep(1000);
 
 
@@ -187,8 +179,6 @@ public class OnlyJewelFull extends LinearOpMode {
                     telemetry.update();
                 }
 
-                servoJewel.setPosition(1);
-
                 sleep(1000);
 
 
@@ -197,11 +187,11 @@ public class OnlyJewelFull extends LinearOpMode {
                 telemetry.addData("color", "unknown");
                 telemetry.update();
 
-                servoJewel.setPosition(1);
-
                 sleep(500);
             }
         }
+
+        servoJewel.setPosition(1);
     }
 }
 
