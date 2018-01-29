@@ -93,8 +93,8 @@ public class Drive extends OpMode {
             telemetry.addData("Arm Status:", "open");
             telemetry.update();
         } else if (gamepad1.x){
-            servo.setPosition(0.15);
-            servo2.setPosition(0.85);
+            servo.setPosition(0.1);
+            servo2.setPosition(0.9);
             telemetry.addData("Arm Status:", "closed");
             telemetry.update();
         } else if (gamepad1.a){

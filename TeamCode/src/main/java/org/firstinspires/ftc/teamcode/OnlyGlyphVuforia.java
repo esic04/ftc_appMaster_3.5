@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -13,6 +14,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 //back motor directions, 1 is reversed, -1 is how it used to be (before switching connectors)
 @Autonomous
+@Disabled
 public class OnlyGlyphVuforia extends LinearOpMode {
     DcMotor left;
     DcMotor right;
